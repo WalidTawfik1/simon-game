@@ -1,0 +1,344 @@
+body {
+    text-align: center;
+    background: linear-gradient(135deg, #1a1d22 0%, #282c34 100%);
+    color: white;
+    min-height: 100vh;
+    margin: 0;
+    padding: 20px;
+    font-family: 'Arial', sans-serif;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(3, 100px);
+    grid-template-rows: repeat(3, 100px);
+    gap: 15px;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.simon-btn {
+    width: 100px;
+    height: 100px;
+    border-radius: 20px;
+    border: none;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 
+        0 6px 12px rgba(0,0,0,0.4),
+        inset 0 -4px 8px rgba(0,0,0,0.3),
+        inset 0 4px 8px rgba(255,255,255,0.1);
+}
+
+#red { background-color: #ff3333; }
+#blue { background-color: #3333ff; }
+#green { background-color: #33ff33; }
+#yellow { background-color: #ffff33; }
+#white { background-color: #ffffff; }
+#purple { background-color: #9933ff; }
+#orange { background-color: #ff9933; }
+#pink { background-color: #ff3399; }
+#cyan { background-color: #33ffff; }
+
+.simon-btn:active, .flash {
+    transform: scale(0.95);
+    border: 3px solid rgba(255,255,255,0.8);
+    box-shadow: 
+        0 0 30px rgba(255,255,255,0.5),
+        inset 0 0 20px rgba(255,255,255,0.4);
+}
+
+.simon-btn:hover {
+    cursor: pointer;
+    transform: translateY(-2px);
+    box-shadow: 
+        0 8px 16px rgba(0,0,0,0.5),
+        inset 0 -4px 8px rgba(0,0,0,0.3),
+        inset 0 4px 8px rgba(255,255,255,0.1);
+}
+
+.flash-red {
+    background-color: red !important;
+    transition: background-color 0.3s ease-in-out;
+}
+
+/* Add glow effects for each button color */
+#red:active, #red.flash { box-shadow: 0 0 30px rgba(255,0,0,0.6); }
+#blue:active, #blue.flash { box-shadow: 0 0 30px rgba(0,0,255,0.6); }
+#green:active, #green.flash { box-shadow: 0 0 30px rgba(0,255,0,0.6); }
+#yellow:active, #yellow.flash { box-shadow: 0 0 30px rgba(255,255,0,0.6); }
+#white:active, #white.flash { box-shadow: 0 0 30px rgba(255,255,255,0.6); }
+#purple:active, #purple.flash { box-shadow: 0 0 30px rgba(153,51,255,0.6); }
+#orange:active, #orange.flash { box-shadow: 0 0 30px rgba(255,153,51,0.6); }
+#pink:active, #pink.flash { box-shadow: 0 0 30px rgba(255,51,153,0.6); }
+#cyan:active, #cyan.flash { box-shadow: 0 0 30px rgba(51,255,255,0.6); }
+
+#mode-select {
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    border-radius: 8px;
+    padding: 8px 16px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin: 10px;
+    outline: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23FFFFFF%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.4-12.8z%22%2F%3E%3C%2Fsvg%3E");
+    background-repeat: no-repeat;
+    background-position: right 12px top 50%;
+    background-size: 12px auto;
+    padding-right: 30px;
+}
+
+#mode-select:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+    border-color: rgba(255, 255, 255, 0.4);
+}
+
+#mode-select:focus {
+    box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.3);
+}
+
+#mode-select option {
+    background-color: #282c34;
+    color: white;
+}
+
+label[for="mode-select"] {
+    font-size: 18px;
+    font-weight: 500;
+    margin-right: 8px;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+#start-btn {
+    background: linear-gradient(135deg, #4a90e2 0%, #357abd 100%);
+    border: none;
+    padding: 10px 25px;
+    font-size: 18px;
+    font-weight: 500;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    transition: all 0.3s ease;
+}
+
+#start-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(0,0,0,0.4);
+    background: linear-gradient(135deg, #357abd 0%, #2868a0 100%);
+}
+
+#start-btn:active {
+    transform: translateY(1px);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+}
+
+/* Add these new styles at the end of the file */
+#level-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    background: linear-gradient(135deg, #fff 0%, #e0e0e0 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 0 2px 10px rgba(255,255,255,0.2);
+}
+
+#score-text,
+#high-score-text,
+#level-text {
+    font-size: 1.5rem;
+    font-weight: 500;
+    margin: 0.5rem 0;
+    padding: 8px 16px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    display: inline-block;
+    margin: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+    transition: all 0.3s ease;
+}
+
+#score-text:not(:empty),
+#high-score-text:not(:empty),
+#level-text:not(:empty) {
+    animation: fadeIn 0.5s ease-out;
+}
+
+.container {
+    padding: 2rem 1rem;
+}
+
+.mode-section {
+    margin: 1.5rem 0;
+    padding: 1rem;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 15px;
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Add hover effect for score displays */
+#score-text:hover,
+#high-score-text:hover,
+#level-text:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    background: rgba(255, 255, 255, 0.15);
+}
+
+/* Update the score styles */
+.score-panel {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 100;
+}
+
+.score-container {
+    background: rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    padding: 15px;
+    border-radius: 15px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+}
+
+#score-text,
+#high-score-text,
+#level-text {
+    font-size: 1.2rem;
+    font-weight: 500;
+    padding: 8px 16px;
+    margin: 5px 0;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    display: block;
+    text-align: left;
+    min-width: 180px;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+#score-text {
+    background: linear-gradient(90deg, rgba(74, 144, 226, 0.2) 0%, rgba(74, 144, 226, 0.1) 100%);
+}
+
+#high-score-text {
+    background: linear-gradient(90deg, rgba(255, 215, 0, 0.2) 0%, rgba(255, 215, 0, 0.1) 100%);
+}
+
+#level-text {
+    background: linear-gradient(90deg, rgba(46, 213, 115, 0.2) 0%, rgba(46, 213, 115, 0.1) 100%);
+}
+
+#score-text:hover,
+#high-score-text:hover,
+#level-text:hover {
+    transform: translateX(-5px);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* Add animation for score changes */
+@keyframes scoreUpdate {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+.score-update {
+    animation: scoreUpdate 0.3s ease-out;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .score-panel {
+        position: static;
+        margin: 20px auto;
+        width: fit-content;
+    }
+    
+    .score-container {
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    #score-text,
+    #high-score-text,
+    #level-text {
+        min-width: auto;
+        text-align: center;
+    }
+}
+
+/* Add these new styles at the end of the file */
+@keyframes loseFlash {
+    0% {
+        background: transparent;
+    }
+    25% {
+        background: rgba(255, 0, 0, 0.4);
+    }
+    100% {
+        background: transparent;
+    }
+}
+
+.lose-flash {
+    animation: loseFlash 0.5s ease-out;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 99;
+    pointer-events: none;
+}
+
+@keyframes winFlash {
+    0% {
+        background: transparent;
+    }
+    25% {
+        background: rgba(46, 213, 115, 0.4);
+    }
+    100% {
+        background: transparent;
+    }
+}
+
+.win-flash {
+    animation: winFlash 0.5s ease-out;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 99;
+    pointer-events: none;
+}
